@@ -52,7 +52,7 @@ public abstract class LifecycleMBeanBase extends LifecycleBase
      */
     @Override
     protected void initInternal() throws LifecycleException {
-
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"调用LifecycleMBeanBase.initInternal()注册组件 开始");
         // If oname is not null then registration has already happened via
         // preRegister().
         if (oname == null) {
@@ -60,6 +60,7 @@ public abstract class LifecycleMBeanBase extends LifecycleBase
 
             oname = register(this, getObjectNameKeyProperties());
         }
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"调用LifecycleMBeanBase.initInternal()注册组件 结束");
     }
 
 

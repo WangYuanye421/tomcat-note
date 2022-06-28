@@ -1114,6 +1114,7 @@ public abstract class AbstractEndpoint<S> {
     public abstract void stopInternal() throws Exception;
 
     public void init() throws Exception {
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"init() 开始");
         if (bindOnInit) {
             bind();
             bindState = BindState.BOUND_ON_INIT;
@@ -1132,6 +1133,7 @@ public abstract class AbstractEndpoint<S> {
                 registerJmx(sslHostConfig);
             }
         }
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"init() 结束");
     }
 
 

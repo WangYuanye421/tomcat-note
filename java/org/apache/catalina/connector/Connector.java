@@ -962,10 +962,11 @@ public class Connector extends LifecycleMBeanBase  {
 
     @Override
     protected void initInternal() throws LifecycleException {
-
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"实现抽象方法initInternal() 开始");
         super.initInternal();
 
         // Initialize adapter
+        System.out.println(">>>>>>>>>>>     创建CoyoteAdapter适配器...");
         adapter = new CoyoteAdapter(this);
         protocolHandler.setAdapter(adapter);
 
@@ -995,6 +996,7 @@ public class Connector extends LifecycleMBeanBase  {
             throw new LifecycleException(
                     sm.getString("coyoteConnector.protocolHandlerInitializationFailed"), e);
         }
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"实现抽象方法initInternal() 结束");
     }
 
 

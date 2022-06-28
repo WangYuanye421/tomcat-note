@@ -237,10 +237,12 @@ public class StandardEngine extends ContainerBase implements Engine {
 
     @Override
     protected void initInternal() throws LifecycleException {
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"实现抽象方法initInternal() 开始");
         // Ensure that a Realm is present before any attempt is made to start
         // one. This will create the default NullRealm if necessary.
         getRealm();
         super.initInternal();
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"实现抽象方法initInternal() 结束");
     }
 
 

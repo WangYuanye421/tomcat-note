@@ -102,7 +102,9 @@ public class StandardThreadExecutor extends LifecycleMBeanBase
 
     @Override
     protected void initInternal() throws LifecycleException {
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"实现抽象方法initInternal() 开始");
         super.initInternal();
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"实现抽象方法initInternal() 结束");
     }
 
 

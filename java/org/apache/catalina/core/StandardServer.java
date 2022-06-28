@@ -825,7 +825,10 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
      */
     @Override
     protected void initInternal() throws LifecycleException {
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"实现抽象方法initInternal() 开始");
 
+        // StandardXXComponent -继承-> LifecycleMBeanBase -继承-> LifecycleBase
+        // LifecycleMBeanBase给出了抽象方法initInternal()的统一实现,即组件注册,LifecycleMBeanBase子类可以继续覆盖此方法
         super.initInternal();
 
         // Register global String cache
@@ -870,6 +873,8 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
                 cl = cl.getParent();
             }
         }
+        // todo services数组何时被赋值的?
+        // 循环遍历,执行所有 service的生命周期init(),与server.init()类似
         // Initialize our defined Services
         for (int i = 0; i < services.length; i++) {
             services[i].init();

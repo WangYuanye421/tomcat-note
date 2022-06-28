@@ -98,6 +98,7 @@ public abstract class LifecycleBase implements Lifecycle {
 
     @Override
     public final synchronized void init() throws LifecycleException {
+        System.out.println(">>>>>>>>>>>     抽象类LifecycleBase的模板方法init() 开始");
         if (!state.equals(LifecycleState.NEW)) {
             invalidTransition(Lifecycle.BEFORE_INIT_EVENT);
         }
@@ -112,6 +113,7 @@ public abstract class LifecycleBase implements Lifecycle {
             throw new LifecycleException(
                     sm.getString("lifecycleBase.initFail",toString()), t);
         }
+        System.out.println(">>>>>>>>>>>     抽象类LifecycleBase的模板方法init() 结束");
     }
 
 

@@ -529,7 +529,7 @@ public class Catalina {
      * Start a new server instance.
      */
     public void load() {
-
+        System.out.println(">>>>>>>>>>>     catalina.load() 开始");
         if (loaded) {
             return;
         }
@@ -543,6 +543,7 @@ public class Catalina {
         initNaming();
 
         // Create and execute our Digester
+        System.out.println(">>>>>>>>>>>     创建XML解析器");
         Digester digester = createStartDigester();
 
         InputSource inputSource = null;
@@ -551,6 +552,7 @@ public class Catalina {
         try {
             try {
                 file = configFile();
+                System.out.println(">>>>>>>>>>>     获取配置文件路径:"+ file.getPath());
                 inputStream = new FileInputStream(file);
                 inputSource = new InputSource(file.toURI().toURL().toString());
             } catch (Exception e) {
@@ -608,6 +610,7 @@ public class Catalina {
             try {
                 inputSource.setByteStream(inputStream);
                 digester.push(this);
+                // 开始解析web.xml文件流
                 digester.parse(inputSource);
             } catch (SAXParseException spe) {
                 log.warn("Catalina.start using " + getConfigFile() + ": " +
@@ -626,7 +629,8 @@ public class Catalina {
                 }
             }
         }
-
+        // todo server对象什么时候被set进Catalina对象的?
+        // 获取server对象
         getServer().setCatalina(this);
         getServer().setCatalinaHome(Bootstrap.getCatalinaHomeFile());
         getServer().setCatalinaBase(Bootstrap.getCatalinaBaseFile());
@@ -649,6 +653,7 @@ public class Catalina {
         if(log.isInfoEnabled()) {
             log.info("Initialization processed in " + ((t2 - t1) / 1000000) + " ms");
         }
+        System.out.println(">>>>>>>>>>>     catalina.load() 结束");
     }
 
 

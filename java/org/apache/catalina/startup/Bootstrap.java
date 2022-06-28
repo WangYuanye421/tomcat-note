@@ -253,7 +253,6 @@ public final class Bootstrap {
      * @throws Exception Fatal initialization error
      */
     public void init() throws Exception {
-
         initClassLoaders();
 
         Thread.currentThread().setContextClassLoader(catalinaLoader);
@@ -286,9 +285,8 @@ public final class Bootstrap {
     /**
      * Load daemon.
      */
-    private void load(String[] arguments)
-        throws Exception {
-
+    private void load(String[] arguments) throws Exception {
+        System.out.println(">>>>>>>>>>>     bootstrap.load() 开始");
         // Call the load() method
         String methodName = "load";
         Object param[];
@@ -306,8 +304,9 @@ public final class Bootstrap {
             catalinaDaemon.getClass().getMethod(methodName, paramTypes);
         if (log.isDebugEnabled())
             log.debug("Calling startup class " + method);
+        System.out.println(">>>>>>>>>>>     利用反射调用Catalina.load()");
         method.invoke(catalinaDaemon, param);
-
+        System.out.println(">>>>>>>>>>>     bootstrap.load() 结束");
     }
 
 
@@ -455,7 +454,7 @@ public final class Bootstrap {
      * @param args Command line arguments to be processed
      */
     public static void main(String args[]) {
-
+        System.out.println(">>>>>>>>>>>     tomcat main函数入口");
         if (daemon == null) {
             // Don't set daemon until init() has completed
             Bootstrap bootstrap = new Bootstrap();

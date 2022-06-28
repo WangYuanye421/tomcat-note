@@ -28,6 +28,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.http.HttpUpgradeHandler;
 
+import org.apache.catalina.connector.CoyoteAdapter;
 import org.apache.coyote.AbstractProtocol;
 import org.apache.coyote.CompressionConfig;
 import org.apache.coyote.Processor;
@@ -61,11 +62,13 @@ public abstract class AbstractHttp11Protocol<S> extends AbstractProtocol<S> {
 
     @Override
     public void init() throws Exception {
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"init() 开始");
         for (UpgradeProtocol upgradeProtocol : upgradeProtocols) {
             configureUpgradeProtocol(upgradeProtocol);
         }
 
         super.init();
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"init() 结束");
     }
 
 

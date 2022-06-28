@@ -527,7 +527,7 @@ public class StandardService extends LifecycleMBeanBase implements Service {
      */
     @Override
     protected void initInternal() throws LifecycleException {
-
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"实现抽象方法initInternal() 开始");
         super.initInternal();
 
         if (engine != null) {
@@ -555,11 +555,13 @@ public class StandardService extends LifecycleMBeanBase implements Service {
                             "standardService.connector.initFailed", connector);
                     log.error(message, e);
 
-                    if (Boolean.getBoolean("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE"))
+                    if (Boolean.getBoolean("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE")){
                         throw new LifecycleException(message);
+                    }
                 }
             }
         }
+        System.out.println(">>>>>>>>>>>     "+this.getClass().getName()+"实现抽象方法initInternal() 结束");
     }
 
 
